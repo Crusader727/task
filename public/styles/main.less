@@ -1,6 +1,6 @@
 @orange-color: #ff340d;
 @gray-color:#efefef;
-
+@second-gray-color: #999999;
 .square {
     display: inline-block;
     border: none;
@@ -12,6 +12,7 @@
 * {
     margin: 0;
     padding: 0;
+    outline: none;
 }
 
 a {
@@ -96,7 +97,7 @@ body {
     .left-menu-first{
         height: 75px;
         font: lighter 11px 'Ubuntu';
-        color: #999999;
+        color: @second-gray-color;
         text-transform: uppercase;
         border-bottom: 1px solid @gray-color;
         p{
@@ -131,6 +132,7 @@ body {
 //LEFT MENU END
 
 .head-name{
+    height: max-content;
     float: right;
     margin: 30px 0 0 40px;
     font: bold 30px 'Ubuntu';
@@ -147,4 +149,83 @@ body {
     padding: 20px 0 0 5px;
 }
 
+//CONTENT
+.content{
+    margin: 157px 0 0 245px;
+    position: absolute;
+    background: white;
+    width: 1000px;
+    height: 500px;
+}
+.content-head{
+    position: relative;
+    height: 75px;
+    border-bottom: 1px solid @gray-color;
+    .contend-head-left{
+        color: black;
+        font: 22px 'Ubuntu';
+        .task-count{
+            color: @second-gray-color;
+        }
+        *{
+            margin-top: 25px;
+            margin-left: 30px;
+            float: left;  
+        }
+    }
+    .contend-head-right{
+        color: @orange-color;
+        font: 14px 'Ubuntu';
+        padding: 30px 30px 0 0; 
+        *{
+            float: right;
+        }
+        img{
+            margin-right: 8px;
+        }
+    }
+}
 
+.filters {
+    margin: 0 30px 0 30px ;
+    padding-top: 20px; 
+    height: 55px;
+    border-bottom: 1px solid @gray-color;
+    *{
+        .square;
+        border: 1px solid @gray-color;
+        background-color: white;
+        height: 30px;
+       
+    }
+    .calendar{
+        width: 150px;
+        font: 14px 'Ubuntu';
+        text-transform: capitalize;
+    }
+    .choose{
+        margin-left: 20px;
+        width: 200px;
+        select{
+            font: 14px 'Ubuntu';
+            width: 200px;
+            border: none;
+        }
+    }
+    .search{
+        float: right;
+        width: 280px;
+        *{
+            border: none;
+            font: 14px 'Ubuntu';
+            width: 255px;
+        }
+        .submit-icon{
+            width: 20px; 
+            height: 20px; 
+            border: none; 
+            background: url(../img/search.png) no-repeat 50% 50%; 
+        }
+    }
+}
+//CONTENT END
