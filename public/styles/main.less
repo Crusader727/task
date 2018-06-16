@@ -155,7 +155,7 @@ body {
     position: absolute;
     background: white;
     width: 1000px;
-    height: 500px;
+
 }
 .content-head{
     position: relative;
@@ -228,4 +228,70 @@ body {
         }
     }
 }
-//CONTENT END
+.table{
+    margin: 0 30px 0 30px;
+    width:940px;
+    border-spacing: 0; 
+    border-collapse: collapse;
+    text-align: left;
+    table-layout: fixed;
+    th{
+        height: 50px;
+        font: lighter 14px 'Ubuntu';
+        color: @second-gray-color;
+        border-bottom: 1px solid @gray-color;
+
+    }
+    td{
+        text-overflow: clip;
+        font: lighter 14px 'Ubuntu';
+        color: black;
+        height: 45px;
+        border-bottom: 1px solid @gray-color;
+        li {
+            padding-left: 2px;
+            list-style-type: disc;
+        }
+    }
+}
+
+.pagination {
+    margin: 20px 0 25px 30px;
+    float: left;
+    ul {
+        li {
+            text-align: center;
+            display: inline-block;
+            vertical-align: middle ;
+            height: 30px;
+            width: 30px;
+            margin-right: 10px; 
+            background-color: @gray-color;
+            font: 14px 'Ubuntu';
+            color: black;
+        }
+    }
+}
+.active {
+    background-color: @orange-color;
+    color: white;
+    font-weight: bold;  
+}
+
+.row-count{
+    float: right;
+    margin: 25px 20px 0 0;
+    :first-child{
+        color: @second-gray-color;
+    }
+    *{
+        float: left;
+        margin-right: 10px;
+        font:  14px 'Ubuntu';
+        color: #029cfe;
+    }
+}
+.active-count{
+    color: black;
+    font-weight: bold;
+}
