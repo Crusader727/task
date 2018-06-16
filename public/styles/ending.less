@@ -1,0 +1,77 @@
+@import "constants.less";
+
+.info{
+    height: 350px;
+    width: 500px;
+    margin-top: 30px; 
+    text-transform: uppercase;
+
+}
+
+.info1{
+    .info;
+    margin-left: 240px;
+    background-color: @orange-color;
+    :first-child{
+        margin: 80px 0 0 62px;
+        font: bold 24px 'Ubuntu'; 
+    }
+    p{
+        padding-right: 120px; 
+        margin-left: 62px; 
+        font: lighter 18px 'Ubuntu'; 
+        color: white;
+        line-height: 2.0;
+    }
+    button{
+        .square;
+        margin: 25px 0 0 62px;
+        color: black;
+        width: 165px;
+        height: 35px;
+        background-color: white;
+        font: bold 12px 'Ubuntu';
+        text-transform: uppercase;
+    }
+     
+}
+.info2{
+    .info;
+    background-color: white; 
+    :first-child{
+        margin: 80px 0 0 62px;
+        font: bold 24px 'Ubuntu';
+        color: black 
+    }
+    p{
+        padding-right: 120px; 
+        margin-left: 62px; 
+        font: lighter 18px 'Ubuntu'; 
+        color: white;
+        line-height: 2.0;
+        color: black 
+    }
+    :last-child{
+        color: @blue-color;
+    }
+}
+
+.footer{
+    margin: 58px 35px 65px 240px;
+    width: 1000px;
+    *{
+        float: left;
+        font:  13px 'Ubuntu';
+        color: @second-gray-color;
+    }
+    div{
+        float: right;
+        *{
+            margin-left: 15px;
+        }
+    }
+    .phone{
+        color: black;
+        margin-left: 115px;
+    }
+}

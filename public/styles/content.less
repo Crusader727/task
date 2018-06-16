@@ -1,0 +1,153 @@
+@import "constants.less";
+
+.content{
+    margin: 100px 0 0 35px;
+    background: white;
+    width: 1000px;
+
+}
+.content-head{
+    position: relative;
+    height: 75px;
+    border-bottom: 1px solid @gray-color;
+    .contend-head-left{
+        color: black;
+        font: 22px 'Ubuntu';
+        .task-count{
+            color: @second-gray-color;
+        }
+        *{
+            margin-top: 25px;
+            margin-left: 30px;
+            float: left;  
+        }
+    }
+    .contend-head-right{
+        color: @orange-color;
+        font: 14px 'Ubuntu';
+        padding: 30px 30px 0 0; 
+        *{
+            float: right;
+        }
+        img{
+            margin-right: 8px;
+        }
+    }
+}
+
+.filters {
+    margin: 0 30px 0 30px ;
+    padding-top: 20px; 
+    height: 55px;
+    border-bottom: 1px solid @gray-color;
+    *{
+        .square;
+        border: 1px solid @gray-color;
+        background-color: white;
+        height: 30px;
+       
+    }
+    .calendar{
+        width: 150px;
+        font: 14px 'Ubuntu';
+        text-transform: capitalize;
+    }
+    .choose{
+        margin-left: 20px;
+        width: 200px;
+        select{
+            font: 14px 'Ubuntu';
+            width: 200px;
+            border: none;
+        }
+    }
+    .search{
+        float: right;
+        width: 280px;
+        *{
+            border: none;
+            font: 14px 'Ubuntu';
+            width: 255px;
+        }
+        .submit-icon{
+            width: 20px; 
+            height: 20px; 
+            border: none; 
+            background: url(../img/search.png) no-repeat 50% 50%; 
+        }
+    }
+}
+.table{
+    margin: 0 30px 0 30px;
+    width:940px;
+    border-spacing: 0; 
+    border-collapse: collapse;
+    text-align: left;
+    table-layout: fixed;
+    th{
+        height: 50px;
+        font: lighter 14px 'Ubuntu';
+        color: @second-gray-color;
+        border-bottom: 1px solid @gray-color;
+
+    }
+    td{
+        text-overflow: clip;
+        font: lighter 14px 'Ubuntu';
+        color: black;
+        height: 45px;
+        border-bottom: 1px solid @gray-color;
+        li {
+            padding-left: 2px;
+            list-style-type: disc;
+        }
+    }
+}
+
+.pagination {
+    margin: 20px 0 25px 30px;
+    float: left;
+    ul {
+        li {
+            display: inline-flex;
+            height: 30px;
+            width: 30px;
+            margin-right: 10px; 
+            background-color: @gray-color;
+            font: 14px 'Ubuntu';
+            color: black;
+            div {
+                margin: auto
+            }
+        }
+    }
+}
+.active {
+    background-color: @orange-color !important;
+    color: white !important;
+    font-weight: bold !important;  
+}
+
+.row-count{
+    float: right;
+    margin: 25px 20px 0 0;
+    :first-child{
+        color: @second-gray-color;
+    }
+    *{
+        float: left;
+        margin-right: 10px;
+        font:  14px 'Ubuntu';
+        color: @blue-color;
+    }
+}
+.active-count{
+    color: black;
+    font-weight: bold;
+}
+break{
+    flex-basis: 100%;
+    width: 0px; 
+    height: 0px; 
+    overflow: hidden;
+}
