@@ -93,7 +93,7 @@ body {
     background-color: white;
     width: 170px;
     height: 230px;
-    margin-top: 30px;
+    margin-top: 32px;
     .left-menu-first{
         height: 75px;
         font: lighter 11px 'Ubuntu';
@@ -132,9 +132,9 @@ body {
 //LEFT MENU END
 
 .head-name{
+    position: absolute;
     height: max-content;
-    float: right;
-    margin: 30px 0 0 40px;
+    margin: 90px 0 0 240px;
     font: bold 30px 'Ubuntu';
     color: black;
     * {
@@ -151,8 +151,7 @@ body {
 
 //CONTENT
 .content{
-    margin: 157px 0 0 245px;
-    position: absolute;
+    margin: 100px 0 0 35px;
     background: white;
     width: 1000px;
 
@@ -294,4 +293,66 @@ body {
 .active-count{
     color: black;
     font-weight: bold;
+}
+break{
+    flex-basis: 100%;
+    width: 0px; 
+    height: 0px; 
+    overflow: hidden;
+  }
+//CONTENT END
+.info{
+    height: 350px;
+    width: 500px;
+    margin-top: 30px; 
+    text-transform: uppercase;
+
+}
+
+.info1{
+    .info;
+    margin-left: 240px;
+    background-color: @orange-color;
+    :first-child{
+        margin: 80px 0 0 62px;
+        font: bold 24px 'Ubuntu'; 
+    }
+    p{
+        padding-right: 120px; 
+        margin-left: 62px; 
+        font: lighter 18px 'Ubuntu'; 
+        color: white;
+        line-height: 2.0;
+    }
+    button{
+        .square;
+        margin: 25px 0 0 62px;
+        color: black;
+        width: 165px;
+        height: 35px;
+        background-color: white;
+        font: bold 12px 'Ubuntu';
+        text-transform: uppercase;
+    }
+     
+}
+.info2{
+    .info;
+    background-color: white; 
+    :first-child{
+        margin: 80px 0 0 62px;
+        font: bold 24px 'Ubuntu';
+        color: black 
+    }
+    p{
+        padding-right: 120px; 
+        margin-left: 62px; 
+        font: lighter 18px 'Ubuntu'; 
+        color: white;
+        line-height: 2.0;
+        color: black 
+    }
+    :last-child{
+        
+    }
 }
