@@ -133,8 +133,12 @@
         <div class="pagination">
             <ul>
                 <li ng-class="{'active': item === utils.currentpage}" ng-repeat='item in utils.pagearray'>
-                    <div ng-if="(!(item == '..' || item == '...'))" ng-click="utils.currentpage = item; paging(item)">{{item}}</div>
-                    <div ng-if="(item == '..' || item == '...')">{{item}}</div>
+                    <div ng-if="(!(item == '..' || item == '...'))" ng-click="utils.currentpage = item; paging(item)">
+                        <p>{{item}}</p>
+                    </div>
+                    <div ng-if="(item == '..' || item == '...')">
+                        <p>{{item}}</p>
+                    </div>
                 </li>
             </ul>
         </div>
