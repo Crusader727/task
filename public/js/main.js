@@ -2,12 +2,10 @@ let app = angular.module('app', []);
 app.controller('DataCtrl', DataCtrl);
 
 
-
-let tableData = [];
-
 function DataCtrl($scope, $http) {
+    let tableData = [];
     $http.get("./js/data.json")
-        .then(function(response) {
+        .then((response) => {
             $scope.items = response.data.arr;
             tableData = response.data.arr;
             $scope.utils = {
@@ -16,16 +14,16 @@ function DataCtrl($scope, $http) {
             };
             $scope.paging($scope.utils.currentpage);
         });
-    $scope.greaterThanForDate = function(prop, val) {
-        return function(item) {
+    $scope.greaterThanForDate = (prop, val) => {
+        return (item) => {
             if (val === undefined) {
                 return true;
             }
             return new Date(item[prop]) > val;
         }
     }
-    $scope.statusFilter = function(prop, val) {
-        return function(item) {
+    $scope.statusFilter = (prop, val) => {
+        return (item) => {
             if (val === 'Все') {
                 return true;
             }
@@ -38,7 +36,7 @@ function DataCtrl($scope, $http) {
     }
 
 
-    $scope.paging = function(current) {
+    $scope.paging = (current) => {
 
         $scope.utils.pagearray = [];
         let totalpages = 1;

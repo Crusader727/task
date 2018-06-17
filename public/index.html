@@ -81,8 +81,8 @@
             </div>
         </div>
         <div class="filters">
-            <input id="month" type="month" class="calendar" ng-model="dateValue">
-            <div class="choose" ng-init="selectedStatusValue='Все'">
+            <input id="month" type="month" class="calendar" ng-model="dateValue" ng-click="utils.currentpage = 1;">
+            <div class="choose" ng-init="selectedStatusValue='Все'" ng-click="utils.currentpage = 1;">
                 <select ng-model="selectedStatusValue">
                             <option>Все</option>
                             <option>Открытые задачи</option>
@@ -90,7 +90,7 @@
                 </select>
             </div>
             <div class="search">
-                <input type="text" placeholder="Поиск задач по проекту" ng-model="searchValue">
+                <input type="text" placeholder="Поиск задач по проекту" ng-model="searchValue" ng-click="utils.currentpage = 1;">
                 <input type="submit" class="submit-icon" value=" ">
             </div>
 
@@ -108,7 +108,7 @@
                 <th style="width: 5%;">Дедлайн</th>
             </tr>
             <tr ng-repeat="item in items | filter:{Name:searchValue}| filter: greaterThanForDate('Created', dateValue)
-                |filter: statusFilter('Status', selectedStatusValue) | limitTo:dataCount">
+                |filter: statusFilter('Status', selectedStatusValue) | limitTo:dataCount: (utils.currentpage-1)*dataCount">
                 <td ng-switch on="{{item.T}}">
                     <img ng-switch-when="0" src="./img/table_icons/red.png" alt="">
                     <img ng-switch-when="1" src="./img/table_icons/green.png" alt="">
@@ -140,10 +140,10 @@
         </div>
         <div class="row-count" ng-init="dataCount=20">
             <p>Количество задач:</p>
-            <p ng-click="dataCount = 20 ;paging(utils.currentpage)" ng-class="{'active-count': dataCount == 20}">20</p>
-            <p ng-click="dataCount = 50 ;paging(utils.currentpage)" ng-class="{'active-count': dataCount == 50}">50</p>
-            <p ng-click="dataCount = 100;paging(utils.currentpage)" ng-class="{'active-count': dataCount == 100}">100</p>
-            <p ng-click="dataCount = '';paging(utils.currentpage)" ng-class="{'active-count': dataCount == ''}">все</p>
+            <p ng-click="dataCount = 20 ;utils.currentpage = 1;paging(utils.currentpage)" ng-class="{'active-count': dataCount == 20}">20</p>
+            <p ng-click="dataCount = 50 ;utils.currentpage = 1;paging(utils.currentpage)" ng-class="{'active-count': dataCount == 50}">50</p>
+            <p ng-click="dataCount = 100;utils.currentpage = 1;paging(utils.currentpage)" ng-class="{'active-count': dataCount == 100}">100</p>
+            <p ng-click="dataCount = '';utils.currentpage = 1;paging(utils.currentpage)" ng-class="{'active-count': dataCount == ''}">все</p>
         </div>
     </div>
     <div class="info1">
