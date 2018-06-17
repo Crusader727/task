@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Task</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 
     <link rel="stylesheet/less" type="text/less" href="styles/constants.less" />
     <link rel="stylesheet/less" type="text/less" href="styles/main.less" />
@@ -14,6 +17,10 @@
     <link rel="stylesheet/less" type="text/less" href="styles/left-menu.less" />
     <link rel="stylesheet/less" type="text/less" href="styles/wrapper.less" />
     <script src="./js/less.min.js" type="text/javascript"></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js "></script>
+    <script src="./js/main.js "></script>
+
 
 </head>
 
@@ -86,39 +93,42 @@
                 </select>
             </div>
             <div class="search">
-                <input type="text" placeholder="Поиск задач по проекту">
+                <input type="text" placeholder="Поиск задач по проекту" ng-model="searchValue">
                 <input type="submit" class="submit-icon" value=" ">
             </div>
 
         </div>
-        <table class="table">
+        <table class="table" ng-controller="DataCtrl">
             <tr>
                 <th style="width: 2%;">T</th>
                 <th style="width: 5%;">Тикет</th>
-                <th style="width: 25%;">Название</th>
+                <th style="width: 20%;">Название</th>
                 <th style="width: 2%;">П</th>
                 <th style="width: 5%;">Статус</th>
-                <th style="width: 5%;">Решение</th>
-                <th style="width: 6%;">Создано</th>
-                <th style="width: 6%;">Обновлено</th>
-                <th style="width: 6%;">Дедлайн</th>
+                <th style="width: 6%;">Решение</th>
+                <th style="width: 5%;">Создано</th>
+                <th style="width: 5%;">Обновлено</th>
+                <th style="width: 5%;">Дедлайн</th>
             </tr>
-            <tr>
-                <td><img src="./img/table_icons/blue.png" alt=""></td>
-                <td>0001</td>
-                <td>
-                    Вывестwddddddddи счxcvgbhnjm,.zxcvbn
+            <tr ng-repeat="item in items | filter:{Name:searchValue} | limitTo:dateCount">
+                <td ng-switch on="{{item.T}}">
+                    <img ng-switch-when="0" src="./img/table_icons/red.png" alt="">
+                    <img ng-switch-when="1" src="./img/table_icons/green.png" alt="">
+                    <img ng-switch-when="2" src="./img/table_icons/blue.png" alt="">
+                    <img ng-switch-when="3" src="./img/table_icons/yellow.png" alt="">
                 </td>
-                <td>
-                    <li>
-
-                    </li>
+                <td>{{ item.Ticket }}</td>
+                <td>{{ item.Name }}</td>
+                <td ng-switch on="{{item.P}}">
+                    <li ng-switch-when="0" style="color:red"></li>
+                    <li ng-switch-when="1" style="color:gray"></li>
+                    <li ng-switch-when="2" style="color:green"></li>
                 </td>
-                <td>Открыто</td>
-                <td>Не решено</td>
-                <td>17.12.15</td>
-                <td>17.12.15</td>
-                <td>17.12.15</td>
+                <td>{{ item.Status ? "Открыто": "Закрыто"}}</td>
+                <td>{{ item.Decision ? "Решено": "Не решено"}}</td>
+                <td>{{item.Created | date:'dd.MM.yy'}}</td>
+                <td>{{item.Modified | date:'dd.MM.yy'}}</td>
+                <td>{{item.Deadline | date:'dd.MM.yy'}}</td>
             </tr>
         </table>
 
@@ -147,12 +157,12 @@
                 </li>
             </ul>
         </div>
-        <div class="row-count">
+        <div class="row-count" ng-init="dateCount=20">
             <p>Количество задач:</p>
-            <p class="active-count">20</p>
-            <p>50</p>
-            <p>100</p>
-            <p>все</p>
+            <p ng-click="dateCount = 20 " ng-class="{'active-count': dateCount == 20}">20</p>
+            <p ng-click="dateCount = 50 " ng-class="{'active-count': dateCount == 50}">50</p>
+            <p ng-click="dateCount = 100" ng-class="{'active-count': dateCount == 100}">100</p>
+            <p ng-click="dateCount = ''" ng-class="{'active-count': dateCount == ''}">все</p>
         </div>
     </div>
     <div class="info1">
