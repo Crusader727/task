@@ -7,6 +7,6 @@
 Для генерации новых данных для таблицы
 node public/js/jsonGenerator.js
 
-Синим отмечены рабочие(реализованные функции)
+Синим отмечены рабочие(реализованные) функции
 
 ![alt text](https://raw.githubusercontent.com/Crusader727/task/master/task.png)
