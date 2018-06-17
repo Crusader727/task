@@ -107,8 +107,7 @@
                 <th style="width: 5%;">Обновлено</th>
                 <th style="width: 5%;">Дедлайн</th>
             </tr>
-            <tr ng-repeat="item in items | filter:{Name:searchValue}| filter: greaterThanForDate('Created', dateValue)
-                |filter: statusFilter('Status', selectedStatusValue) | limitTo:dataCount: (utils.currentpage-1)*dataCount">
+            <tr ng-repeat="item in items | myFilter:this | limitTo:dataCount: (utils.currentpage-1)*dataCount">
                 <td ng-switch on="{{item.T}}">
                     <img ng-switch-when="0" src="./img/table_icons/red.png" alt="">
                     <img ng-switch-when="1" src="./img/table_icons/green.png" alt="">

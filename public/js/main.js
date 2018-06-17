@@ -1,8 +1,8 @@
 let app = angular.module('app', []);
 app.controller('DataCtrl', DataCtrl);
+app.filter('myFilter', myFilter);
 
-
-function DataCtrl($scope, $http) {
+function DataCtrl($scope, $http, $filter) {
     let tableData = [];
     $http.get("./js/data.json")
         .then((response) => {
@@ -12,36 +12,16 @@ function DataCtrl($scope, $http) {
                 currentpage: 1,
                 pagearray: []
             };
+            $filter.filteredCount = tableData.length;
             $scope.paging($scope.utils.currentpage);
         });
-    $scope.greaterThanForDate = (prop, val) => {
-        return (item) => {
-            if (val === undefined) {
-                return true;
-            }
-            return new Date(item[prop]) > val;
-        }
-    }
-    $scope.statusFilter = (prop, val) => {
-        return (item) => {
-            if (val === 'Все') {
-                return true;
-            }
-            if (val === 'Открытые задачи') {
-                return item[prop]
-            } else {
-                return !item[prop]
-            }
-        }
-    }
-
 
     $scope.paging = (current) => {
 
         $scope.utils.pagearray = [];
         let totalpages = 1;
         if ($scope.dataCount != '') {
-            totalpages = Math.ceil(tableData.length / $scope.dataCount);
+            totalpages = Math.ceil($filter.filteredCount / $scope.dataCount);
         }
 
         if (totalpages <= 5) {
@@ -71,4 +51,40 @@ function DataCtrl($scope, $http) {
             }
         }
     }
+}
+
+
+function myFilter($filter) {
+    function greaterThanForDate(item, val) {
+        if (val === undefined) {
+            return true;
+        }
+        return new Date(item.Created) > val;
+    }
+
+    function statusFilter(item, val) {
+        if (val === 'Все') {
+            return true;
+        }
+        if (val === 'Открытые задачи') {
+            return item.Status
+        } else {
+            return !item.Status
+        }
+    }
+
+    return (items, scope) => {
+        if (items != undefined) {
+            let filtered = []
+            let nameFiltered = $filter('filter')(items, { Name: scope.searchValue });
+            nameFiltered.forEach((item) => {
+                if (greaterThanForDate(item, scope.dateValue) && statusFilter(item, scope.selectedStatusValue)) {
+                    filtered.push(item)
+                }
+            })
+            $filter.filteredCount = filtered.length;
+            scope.paging(1);
+            return filtered;
+        }
+    };
 }
