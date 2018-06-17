@@ -9,4 +9,4 @@ node public/js/jsonGenerator.js
 
 Синим отмечены рабочие(реализованные функции)
 
-![alt text](https://github.com/Crusader727/task)
+![alt text](https://raw.githubusercontent.com/Crusader727/task/master/task.png)
